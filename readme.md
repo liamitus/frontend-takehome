@@ -16,7 +16,7 @@
 
 # What's in the box
 * `src/api-response.js` - a slim stub of the expected data response for GET `/events`. Please *don't change this file*. The code you write should be able to handle this data exactly as it is structured in this file.
-* `src/calendar-directive.js` - a stub of a directive that should be fleshed out to meet the criteria
+* `src/` - container for your source files. An empty stylesheet and javascript file have been included.
 * `test/calendar.js` - a set of karma tests that test the functionality of the directive
 
 # The challenge
