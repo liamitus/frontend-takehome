@@ -1,0 +1,14 @@
+# deps
+node_modules/
+
+# General
+.DS_STORE
+
+# Language versions
+.node-version
+
+# Editors
+*.sublime-workspace
+*.sublime-project
+
+npm-debug.log

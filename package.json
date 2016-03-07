@@ -1,0 +1,16 @@
+{
+  "repository": {
+    "url": "https://github.com/calendreco/live-calendar-challenge"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "angular": "1.5.x",
+    "angular-mocks": "1.5.x"
+  },
+  "devDependencies": {
+    "jasmine-core": "2.4.x",
+    "karma": "0.13.x",
+    "karma-chrome-launcher": "0.2.x",
+    "karma-jasmine": "0.3.x"
+  }
+}
