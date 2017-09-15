@@ -11,4 +11,10 @@ node_modules/
 *.sublime-workspace
 *.sublime-project
 
+# Package control
 npm-debug.log
+yarn*
+package-lock.json
+
+# Build articfacts
+dist/
