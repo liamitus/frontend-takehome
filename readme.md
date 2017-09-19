@@ -28,9 +28,10 @@ Much like Google Calendar, the calendar UI should show numbered days of the mont
 ![Example](https://cloud.githubusercontent.com/assets/3581705/13577019/693a01e0-e45e-11e5-857f-b42f5752f6e8.png)
 Each row represents 7 days (Mon - Sun). Days of the month are numbered at the corner of each box.
 
-Some empty test stubs have been provided in `__test__/calendar.js` that we expect to pass at a minimum. The tests leverage [jest](https://facebook.github.io/jest/docs/en/getting-started.html) - feel free to swap this for another lib if you'd rather. They should run on node 4.x without any intermediary build step.
+Some empty test stubs have been provided in `__test__/calendar.js` that we expect to pass at a minimum. The tests leverage [jest](https://facebook.github.io/jest/docs/en/getting-started.html) - feel free to swap this for another lib if you'd rather. They should run on node 4.x, please feel free to use support libs when writing tests!
 
 If you don't want to use the provided build system (babel etc...) please feel free to ignore it.
+Note: webpack was not included, you may use it if you wish or write a single monolithic app.js, we won't be evaluating this point.
 
 # Evaluation Criteria
 * No use of any support libs (jQuery, lodash, LESS, SASS, etc...) with the exception of React or another view library.
