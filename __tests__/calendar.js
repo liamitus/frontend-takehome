@@ -1,3 +1,7 @@
+import React from 'react';
+import Calendar from '../src/app';
+import renderer from 'react-test-renderer';
+
 describe('a sun-mon calendar with events on each day', function() {
 
   test('should have a working test runner', function() {
@@ -6,6 +10,9 @@ describe('a sun-mon calendar with events on each day', function() {
   });
 
   test('should render 4 weeks for the month feb/2015', function() {
+    const cal = renderer.create(
+      <Calendar date={2015, 1, 1} />
+    );
 
   });
 

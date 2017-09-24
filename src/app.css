@@ -1,0 +1,59 @@
+.controls {
+  width: 100%;
+  margin: 1rem 0;
+  text-align: center;
+}
+
+.currentMonth {
+  display: inline-block;
+  width: 15rem;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.headers {
+  padding-left: 1px;
+}
+
+.dayHeader {
+  float: left;
+  font-size: 0.8rem;
+  font-weight: bold;
+  margin-right: 1px;
+  margin-bottom: 1px;
+  padding: 0;
+  text-align: center;
+  width: 14%; /* 7 days of the week / 100% = ~14% */
+}
+
+.day {
+  border: 1px solid #999;
+  float: left;
+  font-size: 0.6rem;
+  font-style: italic;
+  /*line-height: 100px;*/
+  height: 100px;
+  margin-right: -1px;
+  margin-top: -1px;
+  padding: 0;
+  width: 14%; /* 7 days of the week / 100% = ~14% */
+}
+
+.day.notThisMonth {
+  border: 1px solid #DDD;
+  color: #CCC;
+}
+
+.dayOfMonth {
+  border: none;
+  max-width: 0.8rem;
+  margin: 0.1rem;
+  float: right;
+  font-size: 0.6em;
+  font-weight: normal;
+}
+
+.eventList {
+  padding: 0;
+  list-style: none;
+}

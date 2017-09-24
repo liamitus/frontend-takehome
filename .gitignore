@@ -10,6 +10,7 @@ node_modules/
 # Editors
 *.sublime-workspace
 *.sublime-project
+*.swp
 
 # Package control
 npm-debug.log
