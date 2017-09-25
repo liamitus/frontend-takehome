@@ -1,6 +1,7 @@
 // Uncomment for tests, re-comment for build
 // (there has to be an env config or something I'm missing...)
 //import React from 'react';
+//import { render } from 'react-dom';
 
 // Kick off the app
 /////////////////////////////////////////////////////////////////////////////
@@ -20,6 +21,8 @@ const LOCALE = "en-us";
 // Our Components
 /////////////////////////////////////////////////////////////////////////////
 
+// Uncomment this for tests
+//export default class Calendar extends React.Component {
 class Calendar extends React.Component {
   constructor(props) {
     super(props);
@@ -30,7 +33,32 @@ class Calendar extends React.Component {
       currentMonthName: getMonthName(initialDate),
       previousMonthName: getMonthName(prevMonth(initialDate)),
       weeks: [],
+      days: [],
     };
+  }
+
+  renderEventsForDay(date) {
+    var events = []
+    getEventsForDay(date).forEach(function (evt, i) {
+      events.push(<Event key={i} time={evt.time} value={evt.value} />);
+    });
+    return events;
+  }
+
+  renderDaysForWeek(dates, month) {
+    var days = dates.map((d) =>
+      <Day
+        key={d}
+        date={d}
+        dayOfMonth={d.getDate()}
+        isThisMonth={d.getMonth() == month}
+        events={this.renderEventsForDay(d)}
+      />
+    );
+    this.state.days.push(days.map(function (d) {
+      return d.props.isThisMonth;
+    }));
+    return days; 
   }
 
   renderWeeksForMonth() {
@@ -42,12 +70,12 @@ class Calendar extends React.Component {
     while (d.getDay() != 1) {
       d = new Date(d.getFullYear(), d.getMonth(), d.getDate() - 1);
     }
-    this.state.weeks.push(<Week key={d} dates={getDatesOfWeek(d)} month={m} />);
+    this.state.weeks.push(<Week key={d} days={this.renderDaysForWeek(getDatesOfWeek(d), m)} />);
     d = new Date(d.getFullYear(), d.getMonth(), d.getDate() + 7);
 
     // Get the rest of the weeks
     while (d.getMonth() == this.state.currentDate.getMonth()) {
-      this.state.weeks.push(<Week key={d} dates={getDatesOfWeek(d)} month={m} />);
+      this.state.weeks.push(<Week key={d} days={this.renderDaysForWeek(getDatesOfWeek(d), m)} />);
       d = new Date(d.getFullYear(), d.getMonth(), d.getDate() + 7);
     }
   }
@@ -95,46 +123,30 @@ class Calendar extends React.Component {
 }
 
 class Week extends React.Component {
-
   render() {
-    var days = this.props.dates.map((d) =>
-      <Day key={d} date={d} dayOfMonth={d.getDate()} isThisMonth={d.getMonth() == this.props.month}/>
-    );
-
     return (
       <div className="week">
-        {days}
+        {this.props.days}
       </div>
     );
   }
 }
 
 class Day extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      events: [],
-    };
-  }
-
-  renderEvents() {
-    var self = this
-    var events = getEventsForDay(this.props.date);
-    if (!events) {
-      return
-    }
-    events.forEach(function (evt, i) {
-      self.state.events.push(<li key={i} className="event">- {evt}</li>);
-    });
-  }
-
   render() {
-    this.renderEvents()
     return (
       <div className={"day " + (this.props.isThisMonth ? '' : 'notThisMonth')}>
         <div className="dayOfMonth ">{this.props.dayOfMonth}</div>
-        <ul className="eventList">{this.state.events}</ul>
+        <ul className="eventList">{this.props.events}</ul>
       </div>
+    );
+  }
+}
+
+class Event extends React.Component {
+  render() {
+    return (
+      <li className="event">- {this.props.value}</li>
     );
   }
 }
@@ -189,5 +201,6 @@ function getEventsForDay(date) {
   events.sort(function(a, b) {
     return a.time - b.time;
   });
-  return events.map(function (evt) { return evt.value});
+  return events;
+  //return events.map(function (evt) { return evt.value});
 }
